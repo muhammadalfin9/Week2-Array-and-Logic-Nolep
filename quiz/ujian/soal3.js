@@ -3,27 +3,22 @@ diberikan sebuah function groupAnimals(animals) yang menerima satu parameter ber
 fungsi ini akan me-return array 2 dimensi
 */
 function groupAnimals(animals) {
-  let unggas = [];
-  let kadal = [];
-  let kaki4 = [];
-  let hasil = [unggas, kadal, kaki4];
+  animals.sort((a, b) => {
+  if (a[0] < b[0]) return -1;
+  if (a[0] > b[0]) return 1;
+  return 0;
+});
+  result = [];
   for (let i = 0; i < animals.length; i++) {
-    if (animals[i] === "cacing") {
-      kadal.push(animals[i]);
-    } else if (animals[i] === "cicak") {
-      kadal.push(animals[i]);
-    } else if (animals[i] === "ayam") {
-      unggas.push(animals[i]);
-    } else if (animals[i] === "kuda") {
-      kaki4.push(animals[i]);
-    } else if (animals[i] === "anoa") {
-      unggas.push(animals[i]);
-    } else if (animals[i] === "kancil") {
-      kaki4.push(animals[i]);
-    } else if (animals[i] === "unta") {
-      kaki4.push(animals[i]);
+    if (
+      result.length == 0 ||
+      animals[i].charAt(0) !== result[result.length - 1][0][0]
+    ) {
+      result.push([animals[i]]);
+    }else{
+      result[result.length - 1].push(animals[i]);
     }
-  }return hasil;
+  }return result
 }
 
 // TEST CASES
